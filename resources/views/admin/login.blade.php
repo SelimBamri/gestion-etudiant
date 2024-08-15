@@ -1,0 +1,66 @@
+@extends('layouts.auth')
+
+@section('title', 'Login')
+
+@section('content')
+
+
+  <!--authentication-->
+
+<div class="mx-3 mx-lg-0">
+
+  <div class="card my-5 col-xl-9 col-xxl-8 mx-auto rounded-4 overflow-hidden p-4">
+    <div class="row g-4">
+      <div class="col-lg-6 d-flex">
+        <div class="card-body" >
+          <div style='text-align: center;'>
+            <h4 class="fw-bold" >Se connecter en tant qu'admin</h4>
+          </div>
+          <div class="separator" style="margin-bottom: 3rem;">
+            <div class="line"></div>
+          </div>
+          <div class="form-body mt-4">
+            <form class="row g-3"method="POST" action="{{ route('admin.login') }}">
+              @csrf
+              <div class="col-12">
+                <label for="inputLogin" class="form-label">Login</label>
+                <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Admin">
+              </div>
+              <div class="col-12">
+                <label for="inputChoosePassword" class="form-label">Mot de passe</label>
+                <div class="input-group" id="show_hide_password">
+                  <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword" value="12345678"
+                    placeholder="Mot de passe">
+                  <a href="javascript:;" class="input-group-text bg-transparent"><i
+                      class="bi bi-eye-slash-fill"></i></a>
+                </div>
+              </div>
+              <div class="col-12" style = "margin-top: 3rem;">
+                <div class="d-grid">
+                  <button type="submit" class="btn btn-primary">Se connecter</button>
+                </div>
+              </div>
+              @if ($errors->any())
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif  
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 d-lg-flex d-none">
+        <div class="p-3 rounded-4 w-100 d-flex align-items-center justify-content-center bg-light">
+          <img src="{{ URL::asset('build/images/auth/login1.png') }}" class="img-fluid" alt="">
+        </div>
+      </div>
+
+    </div><!--end row-->
+  </div>
+
+</div>
+
+@endsection
