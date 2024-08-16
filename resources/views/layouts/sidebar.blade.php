@@ -20,7 +20,7 @@
           </li>
           <li class="menu-label">Utilisateurs</li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.admins') }}">
               <div class="parent-icon"><i class="material-icons-outlined">person</i>
               </div>
               <div class="menu-title">Administrateurs</div>
@@ -57,7 +57,7 @@
           </li>
           <li class="menu-label">Mon compte</li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.update-my-account')}}">
               <div class="parent-icon"><i class="material-icons-outlined">face_5</i>
               </div>
               <div class="menu-title">Modifier mon compte</div>
@@ -75,6 +75,5 @@
             </form>
           </li>
          </ul>
-        <!--end navigation-->
     </div>
 </aside>

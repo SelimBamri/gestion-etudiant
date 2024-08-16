@@ -17,7 +17,7 @@ class AdminAuthController extends Controller
         if (Auth::guard('admin')->attempt($credentials)) {
             return redirect()->intended('/admin/dashboard');
         }
-        return back()->withErrors(['login' => "L'utilisateur demandé n'existe pas."]);
+        return back()->withErrors(['login' => "Données erronées. Veuillez réessayer."]);
     }
 
     public function logout()
@@ -25,5 +25,6 @@ class AdminAuthController extends Controller
         Auth::guard('admin')->logout();
         return redirect('/admin');
     }
-
 }
+
+
