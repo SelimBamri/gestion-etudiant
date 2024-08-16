@@ -34,7 +34,7 @@
             </a>     
           </li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.etudiants') }}">
               <div class="parent-icon"><i class="material-icons-outlined">person</i>
               </div>
               <div class="menu-title">Étudiants</div>

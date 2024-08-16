@@ -123,4 +123,65 @@ class AdminController extends Controller
         return view('admin.update_enseignant', compact('enseignant'));
     }
 
+
+    public function getAllEtudiants()
+    {
+        $etudiants = Etudiant::all();
+        return view('admin.etudiants', compact('etudiants'));
+    }
+
+    public function addEtudiant(Request $request)
+    {
+        try {
+            $etudiant = Etudiant::create([
+                'email' => $request->input('email'),
+                'password' => Hash::make($request->input('password')),
+                'nom' => $request->input('nom'),
+                'prenom' => $request->input('prenom'),
+                'adresse' => $request->input('adresse'),
+                'telephone' => $request->input('telephone'),
+                'date_de_naissance' => $request->input('dan')
+            ]);
+            return redirect()->back()->with('success', 'Étudiant créé aves succès!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => "Cette adresse mail est déjà utilisée."]);
+        }
+    }
+
+    public function deleteEtudiant($id)
+    {
+        $etudiant = Etudiant::findOrFail($id);
+        $etudiant->delete();
+        return redirect()->back()->with('success', 'Étudiant supprimé avec succès!');
+    }
+
+    public function updateEtudiantPost(Request $request, $id)
+    {
+        if($request->input('password') != $request->input('confirm-password')){
+            return back()->withErrors(['login' => "Les mots de passes ne sont pas identiques."]);
+        }
+        try {
+            $etudiant = Etudiant::findOrFail($id);
+            $etudiant->email = $request->input('email');
+            $etudiant->nom = $request->input('nom');
+            $etudiant->prenom = $request->input('prenom');
+            $etudiant->adresse = $request->input('adresse');
+            $etudiant->telephone = $request->input('telephone');
+            $etudiant->date_de_naissance = $request->input('dan');
+            if ($request->input('password')) {
+                $etudiant->password = Hash::make($request->input('password'));
+            }
+            $etudiant->save();
+            return redirect()->back()->with('success', 'Étudiant modifié avec succès!');
+        } catch (\Exception $e) {
+            return back()->withErrors(['email' => "Cette adresse mail est déjà utilisée."]);
+        }
+    }
+
+    public function updateEtudiant($id)
+    {
+        $etudiant = Etudiant::findOrFail($id);
+        return view('admin.update_etudiant', compact('etudiant'));
+    }
+
 }

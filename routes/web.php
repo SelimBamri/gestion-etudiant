@@ -39,3 +39,11 @@ Route::post('/admin/enseignants', [AdminController::class, 'addEnseignant'])->na
 
 Route::delete('/admin/del/enseignant/{id}', [AdminController::class, 'deleteEnseignant'])->name('enseignant.delete')->middleware('auth:admin');
 
+
+Route::get('/admin/update/etudiant/{id}', [AdminController::class, 'updateEtudiant'])->name('admin.update-etudiant')->middleware('auth:admin');
+Route::put('/admin/update/etudiant/{id}', [AdminController::class, 'updateEtudiantPost'])->name('admin.update-etudiantp')->middleware('auth:admin');
+
+Route::get('/admin/etudiants', [AdminController::class, 'getAllEtudiants'])->name('admin.etudiants')->middleware('auth:admin');
+Route::post('/admin/etudiants', [AdminController::class, 'addEtudiant'])->name('etudiant.add')->middleware('auth:admin');
+
+Route::delete('/admin/del/etudiant/{id}', [AdminController::class, 'deleteEtudiant'])->name('etudiant.delete')->middleware('auth:admin');
