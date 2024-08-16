@@ -30,3 +30,12 @@ Route::post('/admin/admins', [AdminController::class, 'addAdmin'])->name('admin.
 Route::delete('/admin/del/{id}', [AdminController::class, 'deleteAdmin'])->name('admin.delete')->middleware('auth:admin');
 Route::delete('/admin/del', [AdminController::class, 'deleteMyAccount'])->name('admin.my.delete')->middleware('auth:admin');
 
+
+Route::get('/admin/update/enseignant/{id}', [AdminController::class, 'updateEnseignant'])->name('admin.update-enseignant')->middleware('auth:admin');
+Route::put('/admin/update/enseignant/{id}', [AdminController::class, 'updateEnseignantPost'])->name('admin.update-enseignantp')->middleware('auth:admin');
+
+Route::get('/admin/enseignants', [AdminController::class, 'getAllEnseignants'])->name('admin.enseignants')->middleware('auth:admin');
+Route::post('/admin/enseignants', [AdminController::class, 'addEnseignant'])->name('enseignant.add')->middleware('auth:admin');
+
+Route::delete('/admin/del/enseignant/{id}', [AdminController::class, 'deleteEnseignant'])->name('enseignant.delete')->middleware('auth:admin');
+

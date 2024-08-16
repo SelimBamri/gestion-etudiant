@@ -17,6 +17,5 @@ class Etudiant extends Authenticatable
         'email',
         'telephone',
         'password',
-        'paye',
     ];
 }

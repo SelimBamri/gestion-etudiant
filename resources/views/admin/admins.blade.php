@@ -52,7 +52,7 @@
                         <form action="{{ route('admin.delete', $admin->id) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;">
+                            <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;color:red">
                                 <i class="material-icons-outlined">delete</i>
                             </button>
                         </form>

@@ -27,7 +27,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.enseignants') }}">
               <div class="parent-icon"><i class="material-icons-outlined">person</i>
               </div>
               <div class="menu-title">Enseignants</div>
