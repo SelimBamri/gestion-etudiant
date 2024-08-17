@@ -20,6 +20,20 @@ class AdminController extends Controller
         return view('admin.admins', compact('admins'));
     }
 
+    public function getDashboard()
+    {
+        $nbCours = Cours::count();
+        $nbEtudiant = Etudiant::count();
+        $nbEnseignant = Enseignant::count();
+        $nbInscri = Inscription::count();
+        $nbInscriY = Inscription::where('paye', true)->count();
+        $nbInscriN = Inscription::where('paye', false)->count();
+        $totalPrix = Inscription::sum('prix');
+        $totalPrixPaye = Inscription::where('paye', true)->sum('prix');
+        $totalPrixNonPaye = Inscription::where('paye', false)->sum('prix');
+        return view('admin.dashboard', compact('nbEtudiant','nbCours','nbEnseignant', 'nbInscri', 'nbInscriY', 'nbInscriN', 'totalPrix', 'totalPrixPaye', 'totalPrixNonPaye'));
+    }
+
     public function addAdmin(Request $request)
     {
         try {

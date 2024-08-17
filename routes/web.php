@@ -4,9 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () {return view('welcome');});
 
 Route::get('/admin', function () {
     return view('admin.login');
@@ -15,9 +13,7 @@ Route::post('/admin/login', [AdminAuthController::class, 'login'])->name('admin.
 
 Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout')->middleware('auth:admin');
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware('auth:admin');
+Route::get('/admin/dashboard', [AdminController::class, 'getDashboard'])->name('admin.dashboard')->middleware('auth:admin');
 
 Route::get('/admin/my-update', function () {
     return view('admin.update_my_account');
