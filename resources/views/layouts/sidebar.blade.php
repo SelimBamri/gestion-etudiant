@@ -49,7 +49,7 @@
             </a>
           </li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.inscri') }}">
               <div class="parent-icon"><i class="material-icons-outlined">apps</i>
               </div>
               <div class="menu-title">Inscriptions</div>

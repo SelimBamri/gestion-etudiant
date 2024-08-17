@@ -33,21 +33,22 @@ Route::delete('/admin/del', [AdminController::class, 'deleteMyAccount'])->name('
 
 Route::get('/admin/update/enseignant/{id}', [AdminController::class, 'updateEnseignant'])->name('admin.update-enseignant')->middleware('auth:admin');
 Route::put('/admin/update/enseignant/{id}', [AdminController::class, 'updateEnseignantPost'])->name('admin.update-enseignantp')->middleware('auth:admin');
-
 Route::get('/admin/enseignants', [AdminController::class, 'getAllEnseignants'])->name('admin.enseignants')->middleware('auth:admin');
 Route::post('/admin/enseignants', [AdminController::class, 'addEnseignant'])->name('enseignant.add')->middleware('auth:admin');
-
 Route::delete('/admin/del/enseignant/{id}', [AdminController::class, 'deleteEnseignant'])->name('enseignant.delete')->middleware('auth:admin');
 
 
 Route::get('/admin/update/etudiant/{id}', [AdminController::class, 'updateEtudiant'])->name('admin.update-etudiant')->middleware('auth:admin');
 Route::put('/admin/update/etudiant/{id}', [AdminController::class, 'updateEtudiantPost'])->name('admin.update-etudiantp')->middleware('auth:admin');
-
 Route::get('/admin/etudiants', [AdminController::class, 'getAllEtudiants'])->name('admin.etudiants')->middleware('auth:admin');
 Route::post('/admin/etudiants', [AdminController::class, 'addEtudiant'])->name('etudiant.add')->middleware('auth:admin');
-
 Route::delete('/admin/del/etudiant/{id}', [AdminController::class, 'deleteEtudiant'])->name('etudiant.delete')->middleware('auth:admin');
 
 Route::get('/admin/cours', [AdminController::class, 'getAllCours'])->name('admin.cours')->middleware('auth:admin');
 Route::post('/admin/cours', [AdminController::class, 'addCours'])->name('cours.add')->middleware('auth:admin');
 Route::delete('/admin/del/cours/{id}', [AdminController::class, 'deleteCours'])->name('cours.delete')->middleware('auth:admin');
+
+Route::get('/admin/inscri', [AdminController::class, 'getAllInscriptions'])->name('admin.inscri')->middleware('auth:admin');
+Route::post('/admin/inscri', [AdminController::class, 'addInscription'])->name('inscri.add')->middleware('auth:admin');
+Route::delete('/admin/del/inscri/{id}', [AdminController::class, 'deleteInscription'])->name('inscri.delete')->middleware('auth:admin');
+Route::put('/admin/update/inscri/{id}', [AdminController::class, 'updateInscription'])->name('inscri.update')->middleware('auth:admin');

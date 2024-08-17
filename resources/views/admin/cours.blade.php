@@ -43,6 +43,7 @@
                 <th>id</th>
                 <th>Nom</th>
                 <th>Description</th>
+                <th>Nom de l'enseignant</th>
                 <th>Actions</th>
             </thead>
             <tbody>
@@ -51,6 +52,7 @@
                     <td>{{ $cour->id }}</td>
                     <td>{{ $cour->nom }}</td>
                     <td>{{ $cour->description }}</td>
+                    <td>{{ $cour->enseignant->nom }} {{ $cour->enseignant->prenom }}</td>
                     <td>
                         <form action="{{ route('cours.delete', $cour->id) }}" method="POST" style="display:inline;">
                             @csrf

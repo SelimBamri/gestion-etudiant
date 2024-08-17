@@ -9,6 +9,8 @@ class Inscription extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'etudiant_id',
+        'cours_id',
         'prix',
         'paye',
     ];

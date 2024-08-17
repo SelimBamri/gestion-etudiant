@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Etudiant;
 use App\Models\Enseignant;
+use App\Models\Inscription;
 use App\Models\Cours;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -213,5 +214,43 @@ class AdminController extends Controller
         $cours = Cours::findOrFail($id);
         $cours->delete();
         return redirect()->back()->with('success', 'Cours supprimé avec succès!');
+    }
+
+    public function getAllInscriptions()
+    {
+        $inscriptions = Inscription::all();
+        return view('admin.inscriptions', compact('inscriptions'));
+    }
+
+    public function addInscription(Request $request)
+    {
+        try{
+            $etudiant = Etudiant::where('email', $request->input('email'))->first();
+            $inscription = Inscription::create([
+                'prix' => $request->input('prix'),
+                'paye' => false,
+                'etudiant_id' => $etudiant->id,
+                'cours_id' => $request->input('cours'),
+            ]);
+            return redirect()->back()->with('success', 'Inscription créée avec succès!');                
+            }
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors('error', "Une erreur est survenue. Veuillez réessayer plus tard.");
+        }
+    }
+
+    public function deleteInscription($id)
+    {
+        $inscription = Inscription::findOrFail($id);
+        $inscription->delete();
+        return redirect()->back()->with('success', 'Inscription supprimée avec succès!');
+    }
+
+    public function updateInscription($id)
+    {
+        $inscription = Inscription::findOrFail($id);
+        $inscription->paye = !$inscription->paye;
+        $inscription->save();
+        return redirect()->back()->with('success', 'Inscription modifiée avec succès!');
     }
 }
