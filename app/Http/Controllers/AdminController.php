@@ -6,8 +6,10 @@ use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\Etudiant;
 use App\Models\Enseignant;
+use App\Models\Cours;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -184,4 +186,32 @@ class AdminController extends Controller
         return view('admin.update_etudiant', compact('etudiant'));
     }
 
+    public function getAllCours()
+    {
+        $cours = Cours::all();
+        return view('admin.cours', compact('cours'));
+    }
+
+    public function addCours(Request $request)
+    {
+        try{
+            $enseignant = Enseignant::where('email', $request->input('email'))->first();
+            $cours = Cours::create([
+                'nom' => $request->input('nom'),
+                'description' => $request->input('description'),
+                'enseignant_id' => $enseignant->id,
+            ]);
+            return redirect()->back()->with('success', 'Cours créé avec succès!');                
+            }
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors('email', "Cet enseignant n'existe pas.");
+        }
+    }
+
+    public function deleteCours($id)
+    {
+        $cours = Cours::findOrFail($id);
+        $cours->delete();
+        return redirect()->back()->with('success', 'Cours supprimé avec succès!');
+    }
 }

@@ -42,7 +42,7 @@
           </li>
           <li class="menu-label">Gestion</li>
           <li>
-            <a href="javascript:;">
+            <a href="{{ route('admin.cours') }}">
               <div class="parent-icon"><i class="material-icons-outlined">book</i>
               </div>
               <div class="menu-title">Cours</div>

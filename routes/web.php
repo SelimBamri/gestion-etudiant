@@ -47,3 +47,7 @@ Route::get('/admin/etudiants', [AdminController::class, 'getAllEtudiants'])->nam
 Route::post('/admin/etudiants', [AdminController::class, 'addEtudiant'])->name('etudiant.add')->middleware('auth:admin');
 
 Route::delete('/admin/del/etudiant/{id}', [AdminController::class, 'deleteEtudiant'])->name('etudiant.delete')->middleware('auth:admin');
+
+Route::get('/admin/cours', [AdminController::class, 'getAllCours'])->name('admin.cours')->middleware('auth:admin');
+Route::post('/admin/cours', [AdminController::class, 'addCours'])->name('cours.add')->middleware('auth:admin');
+Route::delete('/admin/del/cours/{id}', [AdminController::class, 'deleteCours'])->name('cours.delete')->middleware('auth:admin');
