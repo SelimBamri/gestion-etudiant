@@ -14,7 +14,7 @@
       <div class="col-lg-6 d-flex">
         <div class="card-body" >
           <div style='text-align: center;'>
-            <h4 class="fw-bold" >Se connecter en tant qu'enseignant</h4>
+            <h4 class="fw-bold" >Se connecter en tant qu'étudiant</h4>
           </div>
           <div class="separator">
             <div class="line"></div>
@@ -22,14 +22,14 @@
             <div class="line"></div>
           </div>
           <div style='text-align: center;'>
-          <a href="{{ route('etudiant.login.form') }}">Se connecter en tant qu'étudiant</a>         
+          <a href="{{ route('enseignant.login.form') }}">Se connecter en tant qu'enseignant</a>         
          </div>
           <div class="form-body mt-4">
-            <form class="row g-3"method="POST" action="{{ route('enseignant.login') }}">
+            <form class="row g-3"method="POST" action="{{ route('etudiant.login') }}">
               @csrf
               <div class="col-12">
                 <label for="inputLogin" class="form-label">Email</label>
-                <input type="email" class="form-control" id="inputLogin" name="email" placeholder="Email enseignant">
+                <input type="email" class="form-control" id="inputLogin" name="email" placeholder="Email étudiant">
               </div>
               <div class="col-12">
                 <label for="inputChoosePassword" class="form-label">Mot de passe</label>

@@ -3,10 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\EnseignantAuthController;
+use App\Http\Controllers\EtudiantAuthController;
+use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\AdminController;
-
-Route::get('/', function () {return view('welcome');});
 
 Route::get('/admin', function () {
     return view('admin.login');
@@ -66,3 +66,14 @@ Route::post('/enseignant/absences', [EnseignantController::class, 'addAbsence'])
 Route::get('/enseignant/notes', [EnseignantController::class, 'getAllNotes'])->name('enseignant.notes')->middleware('auth:enseignant');
 Route::post('/enseignant/notes', [EnseignantController::class, 'addNote'])->name('enseignant.notesp')->middleware('auth:enseignant');
 
+//----------------------------------------------------------------------------------------------------
+
+Route::get('/', function () {
+    return view('etudiant.login');
+})->name('etudiant.login.form');
+
+Route::post('/etudiant/login', [EtudiantAuthController::class, 'login'])->name('etudiant.login');
+Route::post('/etudiant/logout', [EtudiantAuthController::class, 'logout'])->name('etudiant.logout')->middleware('auth:etudiant');
+Route::get('/etudiant/cours', [EtudiantController::class, 'getAllCours'])->name('etudiant.cours')->middleware('auth:etudiant');
+Route::get('/etudiant/absences', [EtudiantController::class, 'getAllAbsences'])->name('etudiant.absences')->middleware('auth:etudiant');
+Route::get('/etudiant/notes', [EtudiantController::class, 'getAllNotes'])->name('etudiant.notes')->middleware('auth:etudiant');

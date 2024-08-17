@@ -14,15 +14,15 @@ class EtudiantAuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::guard('enseignant')->attempt($credentials)) {
-            return redirect()->intended('/enseignant/dashboard');
+        if (Auth::guard('etudiant')->attempt($credentials)) {
+            return redirect()->intended('/etudiant/cours');
         }
         return back()->withErrors(['login' => "L'utilisateur demandé n'existe pas."]);
     }
 
     public function logout()
     {
-        Auth::guard('enseignant')->logout();
-        return redirect('/eenseignant');
+        Auth::guard('etudiant')->logout();
+        return redirect('/');
     }
 }
