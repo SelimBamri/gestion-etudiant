@@ -18,4 +18,20 @@ class Cours extends Model
     {
         return $this->belongsTo(Enseignant::class);
     }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+    
+    public function absences()
+    {
+        return $this->hasMany(Absence::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
+
 }

@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\EnseignantAuthController;
+use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\AdminController;
 
 Route::get('/', function () {return view('welcome');});
@@ -48,3 +50,19 @@ Route::get('/admin/inscri', [AdminController::class, 'getAllInscriptions'])->nam
 Route::post('/admin/inscri', [AdminController::class, 'addInscription'])->name('inscri.add')->middleware('auth:admin');
 Route::delete('/admin/del/inscri/{id}', [AdminController::class, 'deleteInscription'])->name('inscri.delete')->middleware('auth:admin');
 Route::put('/admin/update/inscri/{id}', [AdminController::class, 'updateInscription'])->name('inscri.update')->middleware('auth:admin');
+
+//----------------------------------------------------------------------------------------------------
+
+Route::get('/enseignant', function () {
+    return view('enseignant.login');
+})->name('enseignant.login.form');
+
+Route::post('/enseignant/login', [EnseignantAuthController::class, 'login'])->name('enseignant.login');
+Route::post('/enseignant/logout', [EnseignantAuthController::class, 'logout'])->name('enseignant.logout')->middleware('auth:enseignant');
+Route::get('/enseignant/cours', [EnseignantController::class, 'getAllCours'])->name('enseignant.cours')->middleware('auth:enseignant');
+Route::get('/enseignant/cours/{id}', [EnseignantController::class, 'getCours'])->name('enseignant.cours.det')->middleware('auth:enseignant');
+Route::get('/enseignant/absences', [EnseignantController::class, 'getAllAbsences'])->name('enseignant.absences')->middleware('auth:enseignant');
+Route::post('/enseignant/absences', [EnseignantController::class, 'addAbsence'])->name('enseignant.absencesp')->middleware('auth:enseignant');
+Route::get('/enseignant/notes', [EnseignantController::class, 'getAllNotes'])->name('enseignant.notes')->middleware('auth:enseignant');
+Route::post('/enseignant/notes', [EnseignantController::class, 'addNote'])->name('enseignant.notesp')->middleware('auth:enseignant');
+

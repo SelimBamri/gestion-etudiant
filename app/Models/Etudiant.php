@@ -18,4 +18,19 @@ class Etudiant extends Authenticatable
         'telephone',
         'password',
     ];
+
+    public function absences()
+    {
+        return $this->hasMany(Absence::class);
+    }
+
+    public function inscriptions()
+    {
+        return $this->hasMany(Inscription::class);
+    }
+
+    public function notes()
+    {
+        return $this->hasMany(Note::class);
+    }
 }

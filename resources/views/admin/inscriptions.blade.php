@@ -59,13 +59,14 @@
                             @csrf
                             @method('PUT')
                             @if ($ins->paye)
+                                <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;color:green">
+                                    <i class="material-icons-outlined">check</i>
+                                </button>     
+                            @else
                                 <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;color:red">
                                     <i class="material-icons-outlined">close</i>
                                 </button>
-                            @else
-                                <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;color:green">
-                                    <i class="material-icons-outlined">check</i>
-                                </button>
+
                             @endif
                         </form>
                     </td>

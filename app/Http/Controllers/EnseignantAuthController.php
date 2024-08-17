@@ -15,7 +15,7 @@ class EnseignantAuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::guard('enseignant')->attempt($credentials)) {
-            return redirect()->intended('/enseignant/dashboard');
+            return redirect()->intended('/enseignant/cours');
         }
         return back()->withErrors(['login' => "L'utilisateur demandé n'existe pas."]);
     }
@@ -23,6 +23,6 @@ class EnseignantAuthController extends Controller
     public function logout()
     {
         Auth::guard('enseignant')->logout();
-        return redirect('/eenseignant');
+        return redirect('/enseignant');
     }
 }

@@ -9,6 +9,8 @@ class Note extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'etudiant_id',
+        'cours_id',
         'note',
     ];
     
