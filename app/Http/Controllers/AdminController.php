@@ -211,6 +211,9 @@ class AdminController extends Controller
     {
         try{
             $enseignant = Enseignant::where('email', $request->input('email'))->first();
+            if(!$enseignant){
+                return back()->withErrors('error', "Cet enseignant n'existe pas.");
+            }
             $cours = Cours::create([
                 'nom' => $request->input('nom'),
                 'description' => $request->input('description'),
@@ -219,7 +222,7 @@ class AdminController extends Controller
             return redirect()->back()->with('success', 'Cours créé avec succès!');                
             }
         catch (\Exception $e) {
-            return redirect()->back()->withErrors('email', "Cet enseignant n'existe pas.");
+            return back()->withErrors('error', "Cet enseignant n'existe pas.");
         }
     }
 
