@@ -268,6 +268,12 @@ class AdminController extends Controller
     {
         try{
             $etudiant = Etudiant::where('email', $request->input('email'))->first();
+            $existingInscription = Inscription::where('etudiant_id', $etudiant->id)
+            ->where('cours_id', $request->input('cours'))
+            ->first();
+            if ($existingInscription) {
+                return redirect()->back()->withErrors(['error' => 'Cet étudiant est déjà inscrit à ce cours.']);
+            }
             $inscription = Inscription::create([
                 'prix' => $request->input('prix'),
                 'paye' => false,

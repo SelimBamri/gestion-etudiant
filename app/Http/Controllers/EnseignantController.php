@@ -82,6 +82,12 @@ class EnseignantController extends Controller
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
             }
+            $existingNote = Note::where('etudiant_id', $etudiant->id)
+            ->where('cours_id', $request->input('cours'))
+            ->first();
+            if ($existingNote) {
+                return redirect()->back()->withErrors(['error' => 'Une note existe déjà pour cet étudiant et ce cours.']);
+            }
             $note = Note::create([
                 'etudiant_id' => $etudiant->id,
                 'cours_id' => $request->input('cours'),
@@ -89,7 +95,6 @@ class EnseignantController extends Controller
             ]);
             return redirect()->back()->with('success', 'Note ajoutée aves succès!');
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return back()->withErrors(['email' => "Une erreur est survenue. Veuillez réessayer."]);
         } 
     }

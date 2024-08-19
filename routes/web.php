@@ -70,6 +70,10 @@ Route::get('/enseignant', function () {
     return view('enseignant.login');
 })->name('enseignant.login.form');
 
+Route::get('/enseignant/my-account', function () {
+    return view('enseignant.my-account');
+})->name('enseignant.my-account')->middleware('auth:etudiant');
+
 Route::post('/enseignant/login', [EnseignantAuthController::class, 'login'])->name('enseignant.login');
 Route::post('/enseignant/logout', [EnseignantAuthController::class, 'logout'])->name('enseignant.logout')->middleware('auth:enseignant');
 Route::get('/enseignant/cours', [EnseignantController::class, 'getAllCours'])->name('enseignant.cours')->middleware('auth:enseignant');
@@ -88,8 +92,13 @@ Route::get('/etudiant', function () {
     return view('etudiant.login');
 })->name('etudiant.login.form');
 
+Route::get('/etudiant/my-account', function () {
+    return view('etudiant.my-account');
+})->name('etudiant.my-account')->middleware('auth:etudiant');
+
 Route::post('/etudiant/login', [EtudiantAuthController::class, 'login'])->name('etudiant.login');
 Route::post('/etudiant/logout', [EtudiantAuthController::class, 'logout'])->name('etudiant.logout')->middleware('auth:etudiant');
 Route::get('/etudiant/cours', [EtudiantController::class, 'getAllCours'])->name('etudiant.cours')->middleware('auth:etudiant');
 Route::get('/etudiant/absences', [EtudiantController::class, 'getAllAbsences'])->name('etudiant.absences')->middleware('auth:etudiant');
 Route::get('/etudiant/notes', [EtudiantController::class, 'getAllNotes'])->name('etudiant.notes')->middleware('auth:etudiant');
+

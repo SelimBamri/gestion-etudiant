@@ -42,6 +42,14 @@
           </li>
           <li class="menu-label">Mon compte</li>
           <li>
+            <a href="{{ route('etudiant.my-account')}}">
+              <div class="parent-icon"><i class="material-icons-outlined">face_5</i>
+              </div>
+              <div class="menu-title">Détails du compte</div>
+            </a>
+          </li>
+          <li>
+          <li>
            <form method="POST" action="{{ route('enseignant.logout') }}" x-data>
                 @csrf
                 <a>

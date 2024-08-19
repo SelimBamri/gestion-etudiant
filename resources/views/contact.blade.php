@@ -275,7 +275,7 @@
                     </div>
                     <div>
                         <h4 class="mb-2">Horaires</h4>
-                        <p class="mb-2">Trouvez nos heures de travail.</p>
+                        <p class="mb-2">Nos heures de travail.</p>
                         <hr class="w-50 mb-3 border-dark-subtle">
                         <div class="d-flex mb-1">
                         <p class="text-secondary fw-bold mb-0 me-5">lun - ven</p>
