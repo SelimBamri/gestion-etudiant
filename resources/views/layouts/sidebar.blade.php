@@ -12,10 +12,17 @@
         <!--navigation-->
         <ul class="metismenu" id="sidenav">
           <li>
-            <a href="{{ route('admin.dashboard') }}">
+            <a href="{{ route('welcome') }}">
               <div class="parent-icon"><i class="material-icons-outlined">home</i>
               </div>
               <div class="menu-title">Accueil</div>
+            </a>
+          </li>
+          <li>
+            <a href="{{ route('admin.dashboard') }}">
+              <div class="parent-icon"><i class="material-icons-outlined">home</i>
+              </div>
+              <div class="menu-title">Tableau de bord</div>
             </a>
           </li>
           <li class="menu-label">Utilisateurs</li>

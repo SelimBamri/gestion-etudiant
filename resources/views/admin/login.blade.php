@@ -39,6 +39,9 @@
                 <div class="d-grid">
                   <button type="submit" class="btn btn-primary">Se connecter</button>
                 </div>
+                <div class="d-grid">
+                  <a class="btn btn-outline-primary" style="margin-top: 1rem" href="{{route('welcome')}}">Revenir à la page d'accueil</a>
+                </div>
               </div>
               @if ($errors->any())
                 <div class="alert alert-danger">

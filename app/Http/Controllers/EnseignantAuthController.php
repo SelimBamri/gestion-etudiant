@@ -23,6 +23,6 @@ class EnseignantAuthController extends Controller
     public function logout()
     {
         Auth::guard('enseignant')->logout();
-        return redirect('/enseignant');
+        return redirect('/');
     }
 }
