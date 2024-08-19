@@ -212,7 +212,7 @@ class AdminController extends Controller
         try{
             $enseignant = Enseignant::where('email', $request->input('email'))->first();
             if(!$enseignant){
-                return back()->withErrors('error', "Cet enseignant n'existe pas.");
+                return back()->withErrors(["Cet enseignant n'existe pas."]);
             }
             $cours = Cours::create([
                 'nom' => $request->input('nom'),
@@ -238,16 +238,17 @@ class AdminController extends Controller
         try{
             $enseignant = Enseignant::where('email', $request->input('email'))->first();
             if(!$enseignant){
-                return back()->withErrors('error', "Cet enseignant n'existe pas.");
+                return back()->withErrors(["Cet enseignant n'existe pas."]);
             }
-            $cours->nom = $request->input('nom');
+            $cours->nom = $request->input('cours');
             $cours->description = $request->input('description');
             $cours->enseignant_id = $enseignant->id;
             $cours->save();
             return redirect()->back()->with('success', 'Cours modifié avec succès!');                
             }
         catch (\Exception $e) {
-            return back()->withErrors('error', "Cet enseignant n'existe pas.");
+            dd($e->getMessage());
+            return back()->withErrors(["Une erreur est survenue. Réessayer plus tard"]);
         }
     }
 
