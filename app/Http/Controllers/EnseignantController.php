@@ -56,6 +56,13 @@ class EnseignantController extends Controller
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
             }
+            $inscription = Inscription::where('etudiant_id', $etudiant->id)
+                                  ->where('cours_id', $request->input('cours'))
+                                  ->first();
+        
+            if (!$inscription) {
+                return back()->withErrors(['cours' => "Cet étudiant n'est pas inscrit dans ce cours."]);
+            }
             $absence = Absence::create([
                 'etudiant_id' => $etudiant->id,
                 'cours_id' => $request->input('cours'),
@@ -81,6 +88,13 @@ class EnseignantController extends Controller
             $etudiant = Etudiant::where('email', $request->input('email'))->first();
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
+            }
+            $inscription = Inscription::where('etudiant_id', $etudiant->id)
+                                  ->where('cours_id', $request->input('cours'))
+                                  ->first();
+        
+            if (!$inscription) {
+                return back()->withErrors(['cours' => "Cet étudiant n'est pas inscrit dans ce cours."]);
             }
             $existingNote = Note::where('etudiant_id', $etudiant->id)
             ->where('cours_id', $request->input('cours'))
