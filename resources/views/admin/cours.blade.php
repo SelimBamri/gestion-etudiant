@@ -61,6 +61,7 @@
                                 <i class="material-icons-outlined">delete</i>
                             </button>
                         </form>
+                        <a href="{{ route('cours.update.form', $cour->id) }}"><i class="material-icons-outlined">edit</i></a>
                     </td>
                 </tr>
             @endforeach

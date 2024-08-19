@@ -82,7 +82,7 @@ class EnseignantController extends Controller
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
             }
-            $absence = Note::create([
+            $note = Note::create([
                 'etudiant_id' => $etudiant->id,
                 'cours_id' => $request->input('cours'),
                 'note'  => $request->input('note')
@@ -101,6 +101,38 @@ class EnseignantController extends Controller
             $query->where('enseignant_id', $enseignant->id);
         })->with(['cours', 'etudiant'])->get();
         return view('enseignant.notes', compact('notes'));
+    }
+
+    public function deleteNote($id)
+    {
+        $note = Note::findOrFail($id);
+        $note->delete();
+        return redirect()->back()->with('success', 'Note supprimée avec succès!');
+    }
+
+    public function updateNote($id, Request $request)
+    {
+        $note = Note::findOrFail($id);
+        try{
+            $etudiant = Etudiant::where('email', $request->input('email'))->first();
+            if (!$etudiant) {
+                return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
+            }
+            $note -> note = $request->input('note');
+            $note -> cours_id = $request->input('cours');
+            $note -> etudiant_id = $etudiant->id;
+            $note -> save();
+            return redirect()->back()->with('success', 'Note ajoutée aves succès!');
+        } catch (\Exception $e) {
+            dd($e->getMessage());
+            return back()->withErrors(['email' => "Une erreur est survenue. Veuillez réessayer."]);
+        }
+    }
+
+    public function updateNoteForm($id)
+    {
+        $note = Note::findOrFail($id);
+        return view('enseignant.note_form', compact('note'));
     }
 
 }

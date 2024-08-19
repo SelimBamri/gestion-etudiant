@@ -226,6 +226,31 @@ class AdminController extends Controller
         }
     }
 
+    public function updateCoursForm($id)
+    {
+        $cours = Cours::findOrFail($id);
+        return view('admin.cours_form', compact('cours'));
+    }
+
+    public function updateCours(Request $request, $id)
+    {
+        $cours = Cours::findOrFail($id);
+        try{
+            $enseignant = Enseignant::where('email', $request->input('email'))->first();
+            if(!$enseignant){
+                return back()->withErrors('error', "Cet enseignant n'existe pas.");
+            }
+            $cours->nom = $request->input('nom');
+            $cours->description = $request->input('description');
+            $cours->enseignant_id = $enseignant->id;
+            $cours->save();
+            return redirect()->back()->with('success', 'Cours modifié avec succès!');                
+            }
+        catch (\Exception $e) {
+            return back()->withErrors('error', "Cet enseignant n'existe pas.");
+        }
+    }
+
     public function deleteCours($id)
     {
         $cours = Cours::findOrFail($id);

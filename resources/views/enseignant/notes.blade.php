@@ -44,6 +44,7 @@
                 <th>Nom de l'étudiant</th>
                 <th>Nom du cours</th>
                 <th>Note</th>
+                <th>Actions</th>
             </thead>
             <tbody>
             @foreach ($notes as $note)
@@ -52,6 +53,16 @@
                     <td>{{ $note->cours->nom }}</td>
                     <td>{{ $note->etudiant->nom }} {{ $note->etudiant->prenom }}</td>
                     <td>{{ $note->note }}</td>
+                    <td>
+                        <form action="{{ route('note.delete', $note->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" style="background:none;border:none;color:bl;cursor:pointer;color:red">
+                                <i class="material-icons-outlined">delete</i>
+                            </button>
+                        </form>
+                        <a href="{{ route('note.update.form', $note->id) }}"><i class="material-icons-outlined">edit</i></a>
+                    </td>
                 </tr>
             @endforeach
             </tbody>

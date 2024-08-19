@@ -8,6 +8,12 @@ use App\Http\Controllers\EtudiantController;
 use App\Http\Controllers\EnseignantController;
 use App\Http\Controllers\AdminController;
 
+
+Route::get('/', function () {
+    return view('welcome');;
+})->name('welcome');
+
+
 Route::get('/admin', function () {
     return view('admin.login');
 })->name('admin.login.form');
@@ -45,6 +51,9 @@ Route::delete('/admin/del/etudiant/{id}', [AdminController::class, 'deleteEtudia
 Route::get('/admin/cours', [AdminController::class, 'getAllCours'])->name('admin.cours')->middleware('auth:admin');
 Route::post('/admin/cours', [AdminController::class, 'addCours'])->name('cours.add')->middleware('auth:admin');
 Route::delete('/admin/del/cours/{id}', [AdminController::class, 'deleteCours'])->name('cours.delete')->middleware('auth:admin');
+Route::get('/admin/update/cours/{id}', [AdminController::class, 'updateCoursForm'])->name('cours.update.form')->middleware('auth:admin');
+Route::put('/admin/update/cours/{id}', [AdminController::class, 'updateCours'])->name('cours.update')->middleware('auth:admin');
+
 
 Route::get('/admin/inscri', [AdminController::class, 'getAllInscriptions'])->name('admin.inscri')->middleware('auth:admin');
 Route::post('/admin/inscri', [AdminController::class, 'addInscription'])->name('inscri.add')->middleware('auth:admin');
@@ -65,10 +74,13 @@ Route::get('/enseignant/absences', [EnseignantController::class, 'getAllAbsences
 Route::post('/enseignant/absences', [EnseignantController::class, 'addAbsence'])->name('enseignant.absencesp')->middleware('auth:enseignant');
 Route::get('/enseignant/notes', [EnseignantController::class, 'getAllNotes'])->name('enseignant.notes')->middleware('auth:enseignant');
 Route::post('/enseignant/notes', [EnseignantController::class, 'addNote'])->name('enseignant.notesp')->middleware('auth:enseignant');
+Route::delete('/enseignant/notes/{id}', [EnseignantController::class, 'deleteNote'])->name('note.delete')->middleware('auth:enseignant');
+Route::get('/enseignant/notes/{id}', [EnseignantController::class, 'updateNoteForm'])->name('note.update.form')->middleware('auth:enseignant');
+Route::put('/enseignant/notes/{id}', [EnseignantController::class, 'updateNote'])->name('note.update')->middleware('auth:enseignant');
 
 //----------------------------------------------------------------------------------------------------
 
-Route::get('/', function () {
+Route::get('/etudiant', function () {
     return view('etudiant.login');
 })->name('etudiant.login.form');
 
