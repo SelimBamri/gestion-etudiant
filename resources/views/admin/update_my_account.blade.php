@@ -16,7 +16,7 @@
             @method('PUT')
             <div>
                 <div class="col-4" style='margin-bottom: 1rem;'>
-                    <input type="text" class="form-control" name="login" placeholder="Login" value= "{{auth()->user()->login}}">
+                    <input type="text" class="form-control" name="login" placeholder="Login" value= "{{auth()->user()->login}}" required>
                 </div>
                 <div class="col-4" style='margin-bottom: 1rem;'>
                     <input type="password" class="form-control" name="password" placeholder="Mot de passe">

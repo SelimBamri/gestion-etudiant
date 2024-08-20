@@ -56,6 +56,10 @@ class EnseignantController extends Controller
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
             }
+            $cours = Cours::findOrFail($request->input('cours'));
+            if ($cours->enseignant_id != Auth::guard('enseignant')->user()->id) {
+                return back()->withErrors(['id' => "Vous n'avez pas le droit d'ajouter une absence à ce cours."]);
+            }
             $inscription = Inscription::where('etudiant_id', $etudiant->id)
                                   ->where('cours_id', $request->input('cours'))
                                   ->first();
@@ -88,6 +92,10 @@ class EnseignantController extends Controller
             $etudiant = Etudiant::where('email', $request->input('email'))->first();
             if (!$etudiant) {
                 return back()->withErrors(['email' => "Étudiant introuvable avec cet email."]);
+            }
+            $cours = Cours::findOrFail($request->input('cours'));
+            if ($cours->enseignant_id != Auth::guard('enseignant')->user()->id) {
+                return back()->withErrors(['id' => "Vous n'avez pas le droit d'ajouter une note à ce cours."]);
             }
             $inscription = Inscription::where('etudiant_id', $etudiant->id)
                                   ->where('cours_id', $request->input('cours'))

@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Accueil</title>
-
+    <link rel="shortcut icon" href="{{ URL::asset('build/images/favicon.ico') }}" type="image/x-icon">
     @yield('css')
 
     @include('layouts.head-css')

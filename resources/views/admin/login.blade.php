@@ -5,8 +5,6 @@
 @section('content')
 
 
-  <!--authentication-->
-
 <div class="mx-3 mx-lg-0">
 
   <div class="card my-5 col-xl-9 col-xxl-8 mx-auto rounded-4 overflow-hidden p-4">
@@ -24,13 +22,13 @@
               @csrf
               <div class="col-12">
                 <label for="inputLogin" class="form-label">Login</label>
-                <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Admin">
+                <input type="text" class="form-control" id="inputLogin" name="login" placeholder="Admin" required>
               </div>
               <div class="col-12">
                 <label for="inputChoosePassword" class="form-label">Mot de passe</label>
                 <div class="input-group" id="show_hide_password">
                   <input type="password" name="password" class="form-control border-end-0" id="inputChoosePassword"
-                    placeholder="Mot de passe">
+                    placeholder="Mot de passe" required>
                   <a href="javascript:;" class="input-group-text bg-transparent"><i
                       class="bi bi-eye-slash-fill"></i></a>
                 </div>
@@ -57,7 +55,7 @@
       </div>
       <div class="col-lg-6 d-lg-flex d-none">
         <div class="p-3 rounded-4 w-100 d-flex align-items-center justify-content-center bg-light">
-          <img src="{{ URL::asset('build/images/auth/login1.png') }}" class="img-fluid" alt="">
+          <img src="{{ URL::asset('build/images/login1.png') }}" class="img-fluid" alt="">
         </div>
       </div>
 
@@ -65,5 +63,4 @@
   </div>
 
 </div>
-
 @endsection

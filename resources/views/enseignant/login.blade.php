@@ -4,9 +4,6 @@
 
 @section('content')
 
-
-  <!--authentication-->
-
 <div class="mx-3 mx-lg-0">
 
   <div class="card my-5 col-xl-9 col-xxl-8 mx-auto rounded-4 overflow-hidden p-4">
@@ -62,7 +59,7 @@
       </div>
       <div class="col-lg-6 d-lg-flex d-none">
         <div class="p-3 rounded-4 w-100 d-flex align-items-center justify-content-center bg-light">
-          <img src="{{ URL::asset('build/images/auth/login1.png') }}" class="img-fluid" alt="">
+          <img src="{{ URL::asset('build/images/login1.png') }}" class="img-fluid" alt="">
         </div>
       </div>
 

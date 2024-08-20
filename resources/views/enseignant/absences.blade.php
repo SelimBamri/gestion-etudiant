@@ -15,13 +15,13 @@
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <input type="number" class="form-control" name="cours" placeholder="Id du cours" >
+                    <input type="number" class="form-control" name="cours" placeholder="Id du cours" required>
                 </div>
                 <div class="col-4">
-                    <input type="email" class="form-control" name="email" placeholder="Email de l'étudiant">
+                    <input type="email" class="form-control" name="email" placeholder="Email de l'étudiant" required>
                 </div>
                 <div class="col-4">
-                    <input type="date" class="form-control" name="d" placeholder="Date de l'absence">
+                    <input type="date" class="form-control" name="d" placeholder="Date de l'absence" required>
                 </div>
                 <div class="col-4" style='margin-top: 1rem;'>
                     <button type="submit" class="btn btn-primary">Ajouter une absence</button>

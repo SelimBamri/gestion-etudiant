@@ -15,25 +15,25 @@
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <input type="email" class="form-control" name="email" placeholder="Email" >
+                    <input type="email" class="form-control" name="email" placeholder="Email" required>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="nom" placeholder="Nom" >
+                    <input type="text" class="form-control" name="nom" placeholder="Nom" required>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" >
+                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" >
+                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="number" class="form-control" name="telephone" placeholder="Telephone" >
+                    <input type="number" class="form-control" name="telephone" placeholder="Telephone" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="date" class="form-control" name="dan" placeholder="Date de naissance" >
+                    <input type="date" class="form-control" name="dan" placeholder="Date de naissance" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
                     <button type="submit" class="btn btn-primary">Ajouter un Étudiant</button>

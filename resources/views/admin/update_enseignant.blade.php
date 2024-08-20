@@ -16,22 +16,22 @@
             @method('PUT')
             <div class="row">
                 <div class="col-4">
-                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{$enseignant->email}}">
+                    <input type="email" class="form-control" name="email" placeholder="Email" value="{{$enseignant->email}}" required>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="nom" placeholder="Nom" value="{{$enseignant->nom}}">
+                    <input type="text" class="form-control" name="nom" placeholder="Nom" value="{{$enseignant->nom}}" required>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" value="{{$enseignant->prenom}}">
+                    <input type="text" class="form-control" name="prenom" placeholder="Prénom" value="{{$enseignant->prenom}}" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" value="{{$enseignant->adresse}}">
+                    <input type="text" class="form-control" name="adresse" placeholder="Adresse" value="{{$enseignant->adresse}}" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="number" class="form-control" name="telephone" placeholder="Telephone" value="{{$enseignant->telephone}}">
+                    <input type="number" class="form-control" name="telephone" placeholder="Telephone" value="{{$enseignant->telephone}}" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
-                    <input type="date" class="form-control" name="dan" placeholder="Date de naissance" value="{{$enseignant->date_de_naissance}}">
+                    <input type="date" class="form-control" name="dan" placeholder="Date de naissance" value="{{$enseignant->date_de_naissance}}" required>
                 </div>
                 <div class="col-4" style="margin-top: 1rem">
                     <input type="password" class="form-control" name="password" placeholder="Mot de passe">

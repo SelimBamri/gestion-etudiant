@@ -72,7 +72,7 @@ Route::get('/enseignant', function () {
 
 Route::get('/enseignant/my-account', function () {
     return view('enseignant.my-account');
-})->name('enseignant.my-account')->middleware('auth:etudiant');
+})->name('enseignant.my-account')->middleware('auth:enseignant');
 
 Route::post('/enseignant/login', [EnseignantAuthController::class, 'login'])->name('enseignant.login');
 Route::post('/enseignant/logout', [EnseignantAuthController::class, 'logout'])->name('enseignant.logout')->middleware('auth:enseignant');

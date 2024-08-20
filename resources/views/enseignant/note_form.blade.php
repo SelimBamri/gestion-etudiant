@@ -16,13 +16,13 @@
             @method('PUT')
             <div>
                 <div class="col-4" style='margin-bottom: 1rem;'>
-                    <input type="text" class="form-control" name="cours" placeholder="Id du cours" value= "{{$note->cours->id}}">
+                    <input type="text" class="form-control" name="cours" placeholder="Id du cours" value= "{{$note->cours->id}}" required>
                 </div>
                 <div class="col-4" style='margin-bottom: 1rem;'>
-                    <input type="email" class="form-control" name="email" placeholder="Email de l'étudiant" value="{{$note->etudiant->email}}">
+                    <input type="email" class="form-control" name="email" placeholder="Email de l'étudiant" value="{{$note->etudiant->email}}" required>
                 </div>
                 <div class="col-4" style='margin-bottom: 1rem;'>
-                    <input type="number" class="form-control" name="note" placeholder="Note attribuée" value="{{$note->note}}">
+                    <input type="number" class="form-control" name="note" placeholder="Note attribuée" value="{{$note->note}}" required>
                 </div>
                 <div class="col-4">
                     <button type="submit" class="btn btn-primary">Modifier la note</button>

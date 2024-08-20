@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--favicon-->
-    <title>@yield('title') | Gestion des Étudiants</title>
+    <link rel="shortcut icon" href="{{ URL::asset('build/images/favicon.ico') }}" type="image/x-icon">
+    <title>Tableau de bord</title>
 
     @yield('css')
 
@@ -30,7 +31,6 @@
 <!--end overlay-->
 
 
-  @include('layouts.cart')
   @include('layouts.vendor-scripts')
   @yield('scripts')
 

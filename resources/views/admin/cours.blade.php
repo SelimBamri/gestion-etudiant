@@ -15,13 +15,13 @@
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <input type="text" class="form-control" name="nom" placeholder="Nom" >
+                    <input type="text" class="form-control" name="nom" placeholder="Nom" required>
                 </div>
                 <div class="col-4">
-                    <input type="text" class="form-control" name="description" placeholder="Description">
+                    <input type="text" class="form-control" name="description" placeholder="Description" required>
                 </div>
                 <div class="col-4">
-                    <input type="email" class="form-control" name="email" placeholder="Email de l'enseignant">
+                    <input type="email" class="form-control" name="email" placeholder="Email de l'enseignant" required>
                 </div>
                 <div class="col-4" style='margin-top: 1rem;'>
                     <button type="submit" class="btn btn-primary">Ajouter un cours</button>

@@ -42,7 +42,7 @@
           </li>
           <li class="menu-label">Mon compte</li>
           <li>
-            <a href="{{ route('etudiant.my-account')}}">
+            <a href="{{ route('enseignant.my-account')}}">
               <div class="parent-icon"><i class="material-icons-outlined">face_5</i>
               </div>
               <div class="menu-title">Détails du compte</div>

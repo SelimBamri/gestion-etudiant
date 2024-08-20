@@ -15,10 +15,10 @@
             @csrf
             <div class="row">
                 <div class="col-4">
-                    <input type="text" class="form-control" name="login" placeholder="Login" >
+                    <input type="text" class="form-control" name="login" placeholder="Login" required>
                 </div>
                 <div class="col-4">
-                    <input type="password" class="form-control" name="password" placeholder="Mot de passe">
+                    <input type="password" class="form-control" name="password" placeholder="Mot de passe" required>
                 </div>
                 <div class="col-4">
                     <button type="submit" class="btn btn-primary">Ajouter un admin</button>
